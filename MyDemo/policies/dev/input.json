@@ -1,0 +1,14 @@
+{
+    "costEstimation": {
+        "monthlyCostDiff": 5,
+        "totalMonthlyCost": 4
+    },
+    "approvers": [
+        {
+            "teams": [
+                {"name": "Developers"},
+                {"name": "Cost Approvers"}
+            ]
+        }
+    ]
+}
