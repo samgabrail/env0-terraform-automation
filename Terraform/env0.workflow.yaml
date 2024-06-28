@@ -1,0 +1,23 @@
+environments:
+  vpc:
+    name: VPC
+    templateName: 'VPC_AWS'
+  eks:
+    name: EKS
+    templateName: 'EKS'
+    needs:
+      - vpc
+  prometheus:
+    name: Prometheus
+    templateName: 'env0-Helm-Prometheus'
+    disabled: ${DISABLE_PROMETHEUS}
+    needs:
+      - eks
+  grafana:
+    name: Grafana
+    templateName: 'env0-Helm-Grafana'
+    disabled: ${DISABLE_GRAFANA}
+    needs:
+      - eks
+settings:
+  environmentRemovalStrategy: destroy
