@@ -2,6 +2,7 @@ environments:
   eks:
     name: EKS
     templateName: 'EKS'
+    workspace: eks-dev
   prometheus:
     name: Prometheus
     templateName: 'env0-Helm-Prometheus'
