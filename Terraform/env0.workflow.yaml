@@ -5,12 +5,14 @@ environments:
   prometheus:
     name: Prometheus
     templateName: 'env0-Helm-Prometheus'
+    workspace: prometheus-dev
     disabled: ${DISABLE_PROMETHEUS}
     needs:
       - eks
   grafana:
     name: Grafana
     templateName: 'env0-Helm-Grafana'
+    workspace: grafana-dev
     disabled: ${DISABLE_GRAFANA}
     needs:
       - eks
