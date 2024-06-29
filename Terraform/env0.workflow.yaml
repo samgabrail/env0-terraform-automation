@@ -1,12 +1,7 @@
 environments:
-  vpc:
-    name: VPC
-    templateName: 'VPC_AWS'
   eks:
     name: EKS
     templateName: 'EKS'
-    needs:
-      - vpc
   prometheus:
     name: Prometheus
     templateName: 'env0-Helm-Prometheus'
