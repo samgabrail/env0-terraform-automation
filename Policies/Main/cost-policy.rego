@@ -14,7 +14,7 @@ has_key(x, k) {
 
 ## STATIC VARIABLES
 # Cost Approvers
-cost_approvers := "1afb64a1-2d58-4773-a4c2-5ff70c34be30"  # Cost Approvers Team ID
+cost_approvers := "Approvers_Team"  # Cost Approvers Team Name in my account
 cost_limit := 15 # USD per month
 
 # METADATA
@@ -40,7 +40,7 @@ allow[format(rego.metadata.rule())] {
 }
 
 any_approver_present {
-  input.approvers[_].teams[_].id == cost_approvers
+  input.approvers[_].teams[_].name == cost_approvers
 }
 
 # METADATA
