@@ -14,7 +14,7 @@ has_key(x, k) {
 
 ## STATIC VARIABLES
 # Cost Approvers
-cost_approvers := "539edd93-be20-46e8-91f4-3c020d15e9d9"  # Cost Approvers
+cost_approvers := "1afb64a1-2d58-4773-a4c2-5ff70c34be30"  # Cost Approvers Team ID
 cost_limit := 15 # USD per month
 
 # METADATA
