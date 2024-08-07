@@ -68,7 +68,7 @@ resource "aws_eks_addon" "ebs-csi" {
 
 # create an s3 bucket to test drift
 resource "aws_s3_bucket" "drift_test" {
-  bucket = "terraform-drift-${var.cluster_name}"
+  bucket = "terraform-drift-tekanaid-env0"
 }
 resource "aws_s3_bucket_acl" "drift_test" {
   bucket = aws_s3_bucket.drift_test.id
