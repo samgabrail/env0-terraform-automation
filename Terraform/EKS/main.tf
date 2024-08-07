@@ -66,3 +66,17 @@ resource "aws_eks_addon" "ebs-csi" {
   }
 }
 
+# create an s3 bucket to test drift
+resource "aws_s3_bucket" "drift_test" {
+  bucket = "terraform-drift-${var.cluster_name}"
+}
+resource "aws_s3_bucket_acl" "drift_test" {
+  bucket = aws_s3_bucket.drift_test.id
+  acl    = "private"
+}
+  resource "aws_s3_bucket_versioning" "drift_test" {
+    bucket = aws_s3_bucket.drift_test.id
+    versioning_configuration {
+      status = "Enabled"
+    }
+  }
