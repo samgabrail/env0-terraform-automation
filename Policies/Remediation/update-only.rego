@@ -8,7 +8,7 @@ package env0
 # METADATA
 # title: allow if no monthly cost
 # description: approve automatically if the plan has no changes
-allow[msg] {
+pending[msg] {
     print("resource changes in allow")
     print(input.plan.resource_changes)
     not any_resources_with_deletion
