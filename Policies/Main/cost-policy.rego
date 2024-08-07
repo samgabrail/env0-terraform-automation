@@ -34,7 +34,7 @@ warn[message] {
 
 # METADATA
 # title: allow if approved by anyone from cost_approveres team
-# description: deployment can be approved by someone from cost_approvers team (id)
+# description: deployment can be approved by someone from cost_approvers team
 allow[format(rego.metadata.rule())] {
   any_approver_present
 }

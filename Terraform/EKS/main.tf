@@ -70,13 +70,3 @@ resource "aws_eks_addon" "ebs-csi" {
 resource "aws_s3_bucket" "drift_test" {
   bucket = "terraform-drift-tekanaid-env0"
 }
-resource "aws_s3_bucket_acl" "drift_test" {
-  bucket = aws_s3_bucket.drift_test.id
-  acl    = "private"
-}
-  resource "aws_s3_bucket_versioning" "drift_test" {
-    bucket = aws_s3_bucket.drift_test.id
-    versioning_configuration {
-      status = "Enabled"
-    }
-  }

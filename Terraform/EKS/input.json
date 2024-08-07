@@ -1,0 +1,12 @@
+{
+    "approvers": [],
+    "plan": {
+        "resource_changes": [
+            {
+                "change": {
+                    "actions": "update"
+                }
+            }
+        ]
+    }
+}
