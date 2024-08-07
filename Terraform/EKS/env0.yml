@@ -16,5 +16,5 @@ deploy:
         run: |
           terraform output
           aws eks update-kubeconfig --region $(terraform output -raw region) --name $(terraform output -raw cluster_name)
-          kubectl create namespace monitoring
+          kubectl get namespace monitoring >/dev/null 2>&1 || kubectl create namespace monitoring
 
