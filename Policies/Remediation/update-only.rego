@@ -29,4 +29,3 @@ any_resources_with_deletion {
 any_resources_with_creation {
     input.plan.resource_changes[_].change.actions[_] == "create"
 }
-
