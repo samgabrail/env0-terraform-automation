@@ -14,6 +14,24 @@ deploy:
       after:
       - name: "Create Monitoring Namespace"
         run: |
-          terraform output
-          aws eks update-kubeconfig --region $(terraform output -raw region) --name $(terraform output -raw cluster_name)
-          kubectl get namespace monitoring >/dev/null 2>&1 || kubectl create namespace monitoring
+          # Retrieve Terraform outputs
+          REGION=$(terraform output -raw region)
+          CLUSTER_NAME=$(terraform output -raw cluster_name)
+          # Attempt to update kubeconfig to access the EKS cluster
+          if [[ -n "$REGION" && -n "$CLUSTER_NAME" ]]; then
+            echo "Updating kubeconfig for cluster: $CLUSTER_NAME in region: $REGION"
+            if ! aws eks update-kubeconfig --region "$REGION" --name "$CLUSTER_NAME"; then
+              echo "Warning: Failed to update kubeconfig. Cluster $CLUSTER_NAME not found in region $REGION."
+            else
+              # Create namespace if it doesn't exist
+              NAMESPACE="monitoring"
+              if ! kubectl get namespace "$NAMESPACE" >/dev/null 2>&1; then
+                echo "Creating namespace: $NAMESPACE"
+                kubectl create namespace "$NAMESPACE"
+              else
+                echo "Namespace $NAMESPACE already exists. Skipping creation."
+              fi
+            fi
+          else
+            echo "Skipping kubeconfig update and namespace creation due to missing REGION or CLUSTER_NAME."
+          fi
