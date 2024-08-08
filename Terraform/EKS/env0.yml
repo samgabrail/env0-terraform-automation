@@ -17,6 +17,7 @@ deploy:
           # Retrieve Terraform outputs
           REGION=$(terraform output -raw region)
           CLUSTER_NAME=$(terraform output -raw cluster_name)
+          terraform output
           # Attempt to update kubeconfig to access the EKS cluster
           if [[ -n "$REGION" && -n "$CLUSTER_NAME" ]]; then
             echo "Updating kubeconfig for cluster: $CLUSTER_NAME in region: $REGION"
